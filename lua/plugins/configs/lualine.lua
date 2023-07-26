@@ -70,14 +70,11 @@ ins_left {
     return '▊'
   end,
   color = { fg = colors.blue },
-  padding = { left = 0, right = 1 },
+  padding = { left = 0, right = 0 },
 }
 
 ins_left {
-  -- mode component
-  function()
-    return ''
-  end,
+  "mode",
   color = function()
     local mode_color = {
       n = colors.red,
@@ -101,14 +98,9 @@ ins_left {
       ['!'] = colors.red,
       t = colors.red,
     }
-    return { fg = mode_color[vim.fn.mode()] }
+    return { bg = mode_color[vim.fn.mode()], fg = "#000000", gui = 'bold' }
   end,
-  padding = { right = 1 },
-}
-
-ins_left {
-  'filesize',
-  cond = conditions.buffer_not_empty,
+  padding = { right = 1, left = 1 },
 }
 
 ins_left {
@@ -117,9 +109,22 @@ ins_left {
   color = { fg = colors.magenta, gui = 'bold' },
 }
 
-ins_left { 'location' }
+ins_left {
+  'branch',
+  icon = '',
+  color = { fg = colors.violet, gui = 'bold' },
+}
 
-ins_left { 'progress', color = { fg = colors.fg, gui = 'bold' } }
+ins_left {
+  'diff',
+  symbols = { added = ' ', modified = '󰝤 ', removed = ' ' },
+  diff_color = {
+    added = { fg = colors.green },
+    modified = { fg = colors.orange },
+    removed = { fg = colors.red },
+  },
+  cond = conditions.hide_in_width,
+}
 
 ins_left {
   'diagnostics',
@@ -132,15 +137,7 @@ ins_left {
   },
 }
 
--- Insert mid section. You can make any number of sections in neovim :)
--- for lualine it's any number greater then 2
-ins_left {
-  function()
-    return '%='
-  end,
-}
-
-ins_left {
+ins_right {
   function()
     local msg = 'null'
     local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
@@ -157,7 +154,7 @@ ins_left {
     return msg
   end,
   icon = ' LSP:',
-  color = { fg = colors.cyan, gui = 'bold' },
+  color = { fg = colors.blue, gui = 'bold' },
 }
 
 ins_right {
@@ -166,28 +163,7 @@ ins_right {
   color = { fg = colors.green, gui = 'bold' },
 }
 
-ins_right {
-  'fileformat',
-  icons_enabled = false,
-  color = { fg = colors.green, gui = 'bold' },
-}
-
-ins_right {
-  'branch',
-  icon = '',
-  color = { fg = colors.violet, gui = 'bold' },
-}
-
-ins_right {
-  'diff',
-  symbols = { added = ' ', modified = '󰝤 ', removed = ' ' },
-  diff_color = {
-    added = { fg = colors.green },
-    modified = { fg = colors.orange },
-    removed = { fg = colors.red },
-  },
-  cond = conditions.hide_in_width,
-}
+ins_right { 'location' }
 
 ins_right {
   function()
@@ -197,5 +173,4 @@ ins_right {
   padding = { left = 1 },
 }
 
--- Now don't forget to initialize lualine
 lualine.setup(config)
