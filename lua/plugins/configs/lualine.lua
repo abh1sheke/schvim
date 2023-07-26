@@ -153,7 +153,7 @@ ins_right {
     end
     return msg
   end,
-  icon = ' LSP:',
+  icon = ' :',
   color = { fg = colors.blue, gui = 'bold' },
 }
 
