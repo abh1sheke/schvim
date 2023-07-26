@@ -8,6 +8,14 @@ require("lazy").setup({
     end,
   },
   {
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.2',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      require("plugins.configs.telescope")
+    end
+  },
+  {
     "lukas-reineke/indent-blankline.nvim",
     opts = function()
       return require("plugins.configs.indent-blankline")
