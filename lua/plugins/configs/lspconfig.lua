@@ -15,6 +15,7 @@ local servers = {
     "astro",
     "jsonls",
     "dockerls",
+    "marksman",
 }
 
 for _, server in ipairs(servers) do

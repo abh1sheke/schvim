@@ -18,7 +18,8 @@ return {
 		"gomod",
 		"json",
 		"html",
-		"css"
+		"css",
+    "markdown",
 	},
 
 	highlight = {
