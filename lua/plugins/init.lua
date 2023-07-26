@@ -23,30 +23,38 @@ require("lazy").setup({
     dependencies = {
       {
         "neovim/nvim-lspconfig",
-        config = function()
-          require("plugins.configs.lspconfig")
-        end,
       },
       {
         "williamboman/mason.nvim",
         build = function()
           pcall(vim.api.nvim_command, "MasonUpdate")
         end,
-        opts = function ()
+        opts = function()
           require("plugins.configs.mason")
         end
       },
       {
-	      "williamboman/mason-lspconfig.nvim",
-	      opts = require("plugins.configs.mason")
+        "williamboman/mason-lspconfig.nvim",
+        opts = require("plugins.configs.mason")
       },
       -- Autocompletion
-      { "hrsh7th/nvim-cmp" },
+      {
+        "hrsh7th/nvim-cmp",
+        config = function()
+          require("plugins.configs.lspconfig")
+        end,
+      },
       { "hrsh7th/cmp-nvim-lsp" },
       { "L3MON4D3/LuaSnip" },
     },
   },
-
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    config = function()
+      require("null-ls").setup()
+    end,
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
   -- Theme
   {
     "folke/tokyonight.nvim",
@@ -54,7 +62,7 @@ require("lazy").setup({
     priority = 1000,
     opts = {},
     init = function()
-	vim.cmd[[colorscheme tokyonight-night]]
+      vim.cmd [[colorscheme tokyonight-night]]
     end,
   }
 })
