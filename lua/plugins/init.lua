@@ -49,6 +49,12 @@ require("lazy").setup({
       require("gitsigns").setup(opts)
     end,
   },
+  {
+    "nvim-lualine/lualine.nvim",
+    init = function()
+      require("plugins.configs.lualine")
+    end
+  },
   -- Lsp stuff
   {
     "VonHeikemen/lsp-zero.nvim",
