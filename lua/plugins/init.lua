@@ -8,6 +8,16 @@ require("lazy").setup({
     end,
   },
   {
+    "lukas-reineke/indent-blankline.nvim",
+    opts = function()
+      return require("plugins.configs.indent-blankline")
+    end,
+    config = function(_, opts)
+      require("indent_blankline").setup(opts)
+    end
+  },
+  -- Lsp stuff
+  {
     "VonHeikemen/lsp-zero.nvim",
     branch = "v2.x",
     dependencies = {
@@ -26,9 +36,9 @@ require("lazy").setup({
           require("plugins.configs.mason")
         end
       },
-      { 
-	"williamboman/mason-lspconfig.nvim", 
-	opts = require("plugins.configs.mason") 
+      {
+	      "williamboman/mason-lspconfig.nvim",
+	      opts = require("plugins.configs.mason")
       },
       -- Autocompletion
       { "hrsh7th/nvim-cmp" },
@@ -36,6 +46,8 @@ require("lazy").setup({
       { "L3MON4D3/LuaSnip" },
     },
   },
+
+  -- Theme
   {
     "folke/tokyonight.nvim",
     lazy = false,
