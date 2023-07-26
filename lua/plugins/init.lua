@@ -25,6 +25,18 @@ require("lazy").setup({
     end
   },
   {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    cmd = {
+      "TroubleToggle",
+      "TroubleToggle workspace_diagnostics",
+      "TroubleToggle document_diagnostics",
+      "TroubleToggle quickfix",
+      "TroubleToggle loclist",
+      "TroubleToggle lsp_references",
+    }
+  },
+  {
     "lewis6991/gitsigns.nvim",
     ft = { "gitcommit", "diff" },
     init = function()
