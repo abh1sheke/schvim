@@ -67,6 +67,12 @@ require("lazy").setup({
       require("plugins.configs.lualine")
     end
   },
+  {
+    "numToStr/Comment.nvim",
+    config = function()
+      require("Comment").setup()
+    end
+  },
   -- Lsp stuff
   {
     "VonHeikemen/lsp-zero.nvim",
