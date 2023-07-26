@@ -1,9 +1,9 @@
-g = vim.g
-opt = vim.opt
+local g = vim.g
+local opt = vim.opt
 
 g.mapleader = " "
 
-opt.laststatus = 3 
+opt.laststatus = 3
 opt.showmode = false
 
 opt.nu = true
@@ -49,3 +49,5 @@ opt.undofile = true
 opt.swapfile = false
 opt.backup = false
 opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+
+require("user.mappings")
