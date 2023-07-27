@@ -6,8 +6,8 @@ require("lazy").setup({
     opts = function()
       return require("plugins.configs.treesitter")
     end,
-    config = function (_, opts)
-      require ("nvim-treesitter.configs").setup(opts)
+    config = function(_, opts)
+      require("nvim-treesitter.configs").setup(opts)
     end
   },
   {
@@ -117,13 +117,14 @@ require("lazy").setup({
   },
   -- Theme
   {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {},
-    init = function()
-      vim.cmd [[colorscheme tokyonight-night]]
-    end,
+    'rose-pine/neovim',
+    name = 'rose-pine',
+    config = function()
+      require("rose-pine").setup({
+        variant = "auto"
+      })
+      vim.cmd [[colorscheme rose-pine]]
+    end
   }
 })
 
