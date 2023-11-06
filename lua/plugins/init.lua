@@ -111,9 +111,13 @@ require("lazy").setup({
   {
     "jose-elias-alvarez/null-ls.nvim",
     config = function()
-      require("null-ls").setup()
+      require("plugins.configs.null-ls")
     end,
     dependencies = { "nvim-lua/plenary.nvim" },
+  },
+  -- Java stuff
+  {
+    "mfussenegger/nvim-jdtls",
   },
   -- Theme
   {
