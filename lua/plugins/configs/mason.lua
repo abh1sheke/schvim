@@ -14,5 +14,6 @@ return {
     "dockerls",
     "yamlls",
     "marksman",
+    "jdtls"
   },
 }
