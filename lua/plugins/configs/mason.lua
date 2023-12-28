@@ -1,19 +1,16 @@
 return {
   ensure_installed = {
-    "lua_ls",
-    "gopls",
-    "eslint",
-    "tsserver",
-    "tailwindcss",
-    "svelte",
-    "astro",
-    "pyright",
     "html",
     "cssls",
-    "jsonls",
+    "svelte",
+    "tailwindcss",
+    "gopls",
     "dockerls",
-    "yamlls",
-    "marksman",
-    "jdtls"
+    "eslint",
+    "tsserver",
+    "astro",
+    "dockerls",
+    "ocamllsp",
+    "clangd"
   },
 }
