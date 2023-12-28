@@ -115,11 +115,7 @@ require("lazy").setup({
     end,
     dependencies = { "nvim-lua/plenary.nvim" },
   },
-  -- Java stuff
-  {
-    "mfussenegger/nvim-jdtls",
-  },
-  -- Theme
+  -- Themes
   {
     'rose-pine/neovim',
     name = 'rose-pine',
