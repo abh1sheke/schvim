@@ -20,6 +20,8 @@ return {
 		"html",
 		"css",
     "markdown",
+    "c",
+    "ocaml"
 	},
 
 	highlight = {
