@@ -123,7 +123,8 @@ require("lazy").setup({
       })
       vim.cmd [[colorscheme rose-pine]]
     end
-  }
+  },
+  { 'xiyaowong/transparent.nvim' }
 })
 
 require("plugins.configs.lsp-zero");
