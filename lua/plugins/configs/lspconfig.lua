@@ -17,6 +17,7 @@ local servers = {
   "templ",
 }
 
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 for _, server in ipairs(servers) do
   lspconfig[server].setup({
     on_attach = function(client, bufrn)
