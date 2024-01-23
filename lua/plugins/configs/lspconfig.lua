@@ -1,4 +1,4 @@
-local lspconfig = require "lspconfig"
+local lspconfig = require("lspconfig")
 
 local servers = {
   "html",
@@ -13,11 +13,12 @@ local servers = {
   "astro",
   "dockerls",
   "ocamllsp",
-  "clangd"
+  "clangd",
+  "templ",
 }
 
 for _, server in ipairs(servers) do
-  lspconfig[server].setup {
+  lspconfig[server].setup({
     on_attach = function(client, bufrn)
       if server == "tsserver" then
         client.server_capabilities.documentFormattingProvider = false
@@ -25,10 +26,10 @@ for _, server in ipairs(servers) do
       end
     end,
     capabilities = capabilities,
-  }
+  })
 end
 
-lspconfig.lua_ls.setup {
+lspconfig.lua_ls.setup({
   settings = {
     Lua = {
       diagnostics = {
@@ -40,4 +41,24 @@ lspconfig.lua_ls.setup {
       },
     },
   },
-}
+})
+
+vim.filetype.add({ extension = { templ = "templ" } })
+lspconfig.html.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "html", "templ" },
+})
+
+require 'lspconfig'.tailwindcss.setup({
+  settings = {
+    tailwindCSS = {
+      experimental = {
+        classRegex = {
+          { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+          { "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" }
+        },
+      },
+    },
+  },
+})
