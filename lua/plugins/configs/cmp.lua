@@ -7,7 +7,29 @@ cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 local has_words_before = function()
   unpack = unpack or table.unpack
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
+local ELLIPSIS_CHAR = "…"
+local MAX_LABEL_WIDTH = 25
+local MAX_KIND_WIDTH = 14
+
+local get_ws = function(max, len)
+  return (" "):rep(max - len)
+end
+
+local format = function(_, item)
+  local content = item.abbr
+  -- local kind_symbol = symbols[item.kind]
+  -- item.kind = kind_symbol .. get_ws(MAX_KIND_WIDTH, #kind_symbol)
+
+  if #content > MAX_LABEL_WIDTH then
+    item.abbr = vim.fn.strcharpart(content, 0, MAX_LABEL_WIDTH) .. ELLIPSIS_CHAR
+  else
+    item.abbr = content .. get_ws(MAX_LABEL_WIDTH, #content)
+  end
+
+  return item
 end
 
 cmp.setup({
@@ -68,5 +90,8 @@ cmp.setup({
     { name = "nvim_lsp" },
     { name = "buffer" },
     { name = "nvim_lua" },
+  },
+  formatting = {
+    format = format,
   },
 })
