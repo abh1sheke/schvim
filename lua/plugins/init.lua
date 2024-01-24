@@ -117,6 +117,7 @@ require("lazy").setup({
         end,
       },
       { "hrsh7th/cmp-nvim-lsp" },
+      { "hrsh7th/cmp-path" },
       {
         "L3MON4D3/LuaSnip",
         build = vim.fn.has("win32") ~= 0 and "make install_jsregexp" or nil,
